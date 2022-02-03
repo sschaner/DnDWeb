@@ -9,42 +9,32 @@ using Flurl.Http;
 
 namespace DnDWeb.Controllers
 {
-    public class ClassController : Controller
+    public class EquipmentController : Controller
     {
-        List<ApiItem> _classCollection;
-
-        public ClassController()
-        {
-            string apiUri = "https://www.dnd5eapi.co/api/classes";
-            var apiTask = apiUri.GetJsonAsync<CharacterClass>(); // Deserializes JSON into CharacterClass
-            apiTask.Wait();
-            _classCollection = apiTask.Result.results;
-        }
-
-        // GET: ClassController
+        // GET: EquipmentController
         public ActionResult Index()
         {
-            return View(_classCollection);
+            return View();
         }
 
-        // GET: ClassController/Details/5
+        // GET: EquipmentController/Details/5
         public ActionResult Details(string index)
         {
-            string apiUri = $"https://www.dnd5eapi.co/api/classes/{index}";
-            var apiTask = apiUri.GetJsonAsync<ClassDetail>();
+            string apiUri = $"https://www.dnd5eapi.co/api/equipment/{index}";
+            var apiTask = apiUri.GetJsonAsync<Equipment>();
             apiTask.Wait();
-            ClassDetail classDetail = apiTask.Result;
+            Equipment equipmentDetails = apiTask.Result;
 
-            return View(classDetail);
+            return View(equipmentDetails);
         }
 
-        // GET: ClassController/Create
+        // GET: EquipmentController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ClassController/Create
+        // POST: EquipmentController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -59,13 +49,13 @@ namespace DnDWeb.Controllers
             }
         }
 
-        // GET: ClassController/Edit/5
+        // GET: EquipmentController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: ClassController/Edit/5
+        // POST: EquipmentController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -80,13 +70,13 @@ namespace DnDWeb.Controllers
             }
         }
 
-        // GET: ClassController/Delete/5
+        // GET: EquipmentController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: ClassController/Delete/5
+        // POST: EquipmentController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

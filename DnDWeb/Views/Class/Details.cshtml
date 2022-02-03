@@ -22,7 +22,7 @@
             @foreach (var item in Model.starting_equipment)
             {
             <tr>
-                <td>@Html.ActionLink(item.equipment.name, "ItemDetails", new { index = item.equipment.index })</td>
+                <td>@Html.ActionLink(item.equipment.name, "Details", "Equipment", new { index = item.equipment.index })</td>
                 <td>@item.quantity</td>
             </tr>
 
